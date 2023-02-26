@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CODEFIRST.Models.Membership>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Account_Balance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MembershipCategory)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account_Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonDetail.EmailId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MembershipCategory.Membership_Category_Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Membership_Id">Edit</a> |
+                <a asp-action="MembershipDetails" asp-route-id="@item.Membership_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Membership_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
